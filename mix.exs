@@ -2,13 +2,13 @@ defmodule Params.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/vic/params"
-  @version "2.2.0"
+  @version "2.3.0"
 
   def project do
     [
       app: :params,
       version: @version,
-      elixir: "~> 1.2",
+      elixir: "~> 1.18.0",
       name: "Params",
       deps: deps(),
       docs: docs(),
