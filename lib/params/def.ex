@@ -16,7 +16,7 @@ defmodule Params.Def do
          def unquote(name)(params, options \\ []) do
            unquote(module_name).from(params, options)
          end
-      end, [], __MODULE__)
+      end, [], __ENV__)
     end
   end
 
@@ -33,7 +33,7 @@ defmodule Params.Def do
          def unquote(name)(params) do
            unquote(module_name).from(params)
          end
-      end, [], __MODULE__)
+      end, [], __ENV__)
     end
   end
 
@@ -41,7 +41,7 @@ defmodule Params.Def do
   defmacro defschema(schema) do
     quote bind_quoted: [schema: schema] do
       normalized_schema = Params.Def.normalize_schema(schema, __MODULE__)
-      Code.eval_quoted(Params.Def.gen_root_schema(normalized_schema), [], __MODULE__)
+      Code.eval_quoted(Params.Def.gen_root_schema(normalized_schema), [], __ENV__)
 
       normalized_schema
       |> Params.Def.build_nested_schemas
